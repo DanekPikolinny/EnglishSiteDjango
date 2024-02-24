@@ -21,5 +21,6 @@ from welcome_app import  views as welcome_views
 urlpatterns = [
     path('', welcome_views.get_welcome_page),
     path('admin/', admin.site.urls),
-    path('text_practise/', include('vocabulary_app.urls')),
+    path('vocabulary/', include('vocabulary_app.urls')),
+    path('grammary/', include('grammary_app.urls')),
 ]
