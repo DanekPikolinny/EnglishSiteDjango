@@ -1,4 +1,4 @@
 # Django_Practise
-# Animal-Blog
+# English texts, grammary tasks
 
 Simply blog on a django
