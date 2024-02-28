@@ -1,8 +1,17 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block static %} <link rel="stylesheet" href="{% static 'vocabulary_app/index.css' %}"> {% endblock %}
 
 {%block title%}Vocabulary App{%endblock%}
 
 
 {% block content %}
     <h1>Welcome to Vocabulary App</h1>
+    <ul>
+        <li><h2><a href="{% url 'vocabulary_main_text_page' %}">Texts to translate</a></h2></li>
+        <li><h2><a href="#">Some Other Apps</a></h2></li>
+        <li><h2><a href="#">Some Other Apps</a></h2></li>
+    </ul>
+    
 {% endblock %}
