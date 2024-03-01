@@ -1,37 +1,30 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, get_object_or_404
 from django.urls import reverse
+from .models import TextSection
 
 
 # Create your views here.
-
-texts_data = {
-    'titles': ["bayeux", "ilon_Mask", "johny_Depp"],
-    'texts': []
-}
-
-
 def get_welcome_page(request):
     return render(request, 'vocabulary_app/index.html')
 
 
-def get_main_text_page(request):
-    data = {
-    'titles': ["bayeux", "ilon_Mask", "johny_Depp"],
-    'texts': []
+def get_all_text(request):
+    data = TextSection.objects.all()
+    response = {
+        'all_texts': data,
     }
-    return render(request, 'vocabulary_app/main_text_page.html', context=data)
+    return render(request, 'vocabulary_app/main_text_page.html', context=response)
 
 
-def get_text_page(request, text_number):
+def get_one_text(request, text_slug):
+    text = get_object_or_404(TextSection, slug=text_slug)
     data = {
-        'title': texts_data[text_number]['title'],
-        'text': texts_data[text_number]['text']
+        'text': text,
     }
     return render(request, 'vocabulary_app/text_page.html', context=data)
 
 
-def get_text_page_by_title(request, text_title):
-    title = {
-        'title': text_title,
-    }
-    return render(request, 'vocabulary_app/text_page.html', context=title)
+def get_one_text_by_num(request, text_number):
+    pass
+
+

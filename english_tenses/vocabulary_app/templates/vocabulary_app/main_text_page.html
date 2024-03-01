@@ -1,11 +1,19 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block title %}{% endblock %}Some Texts
-
+{% block static %} <link rel="stylesheet" href="{% static 'vocabulary_app/index.css' %}"> {% endblock %}
+{% block title %}Some Texts{% endblock %}
 
 {% block content %}
+{% include 'includes/navbar.html' %}
+
     <h1>This Is main Texts Page</h1>
-    {% for title in titles %}
-        <h2><a href="{% url 'choosen_text_by_title' text_title=title %}">{{title|capfirst}}</a></h2>
-    {% endfor %}
+    <ul>
+        {% for text in all_texts %}
+            <li><a href={{text.get_url}}>{{text.title}}</a></li>
+        {% endfor %}
+    </ul>
+    
+{% include 'includes/navbar.html' %}
 {% endblock %}
+
