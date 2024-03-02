@@ -4,10 +4,21 @@ from django.urls import reverse
 
 # Create your models here.
 class TextSection(models.Model):
+    HARD = 'H'
+    MEDIUM = 'M'
+    EASY = 'E'
+    
+    dif = [
+        (HARD, 'HARD'),
+        (MEDIUM, 'MEDIUM'),
+        (EASY, 'EASY'),
+    ]
+
     title = models.CharField(max_length=100)
     text = models.TextField()
     rating = models.IntegerField()
     slug = models.SlugField(default='', null=False, db_index=True)
+    difficulty = models.CharField(max_length=1, choices=dif, default=EASY)
 
     def get_url(self):
         return reverse('choosen_text', args=[self.slug])
