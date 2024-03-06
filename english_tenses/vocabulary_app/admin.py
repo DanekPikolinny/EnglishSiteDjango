@@ -1,10 +1,15 @@
 from typing import Any
 from django.contrib import admin
 from django.db.models.query import QuerySet
-from .models import TextSection
+from .models import TextSection, Author
 from django.db.models import Q
 
 # Register your models here.
+
+@admin.register(Author)
+class AuthorAdmin(admin.ModelAdmin):
+    list_display = ['first_name', 'last_name', 'age']
+
 
 class RatingFilter(admin.SimpleListFilter):
     title = 'Rating Filter!'
@@ -31,7 +36,7 @@ class RatingFilter(admin.SimpleListFilter):
 
 @admin.register(TextSection)
 class TextSectionAdmin(admin.ModelAdmin):
-    list_display = ['title', 'text', 'text_translate', 'rating', 'rating_status']
+    list_display = ['title', 'text', 'text_translate', 'rating', 'author']
     list_editable = ['text', 'rating']
     search_fields = ['title']
     ordering = ['-rating']
