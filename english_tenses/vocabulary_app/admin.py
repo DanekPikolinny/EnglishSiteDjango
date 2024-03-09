@@ -36,7 +36,7 @@ class RatingFilter(admin.SimpleListFilter):
 
 @admin.register(TextSection)
 class TextSectionAdmin(admin.ModelAdmin):
-    list_display = ['title', 'text', 'text_translate', 'rating', 'author']
+    list_display = ['title', 'text', 'rating', 'author']
     list_editable = ['text', 'rating']
     search_fields = ['title']
     ordering = ['-rating']

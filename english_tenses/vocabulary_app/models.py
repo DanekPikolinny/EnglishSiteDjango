@@ -4,6 +4,10 @@ from django.utils.text import slugify
 from django.urls import reverse
 
 # Create your models here.
+class TextTranslate(models.Model):
+    translated_text = models.TextField()
+
+
 class Author(models.Model):
     first_name = models.CharField(max_length=100, null=False)
     last_name = models.CharField(max_length=100, null=False)
@@ -31,7 +35,6 @@ class TextSection(models.Model):
 
     title = models.CharField(max_length=100)
     text = models.TextField()
-    text_translate = models.TextField(null=True)
     rating = models.IntegerField()
     slug = models.SlugField(default='', null=False, db_index=True)
     difficulty = models.CharField(max_length=1, choices=DIF_CHOICES, default=EASY)
