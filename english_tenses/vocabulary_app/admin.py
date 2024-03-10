@@ -8,7 +8,7 @@ from django.db.models import Q
 
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
-    list_display = ['first_name', 'last_name', 'age']
+    list_display = ['first_name', 'last_name', 'age', 'slug']
 
 
 class RatingFilter(admin.SimpleListFilter):
