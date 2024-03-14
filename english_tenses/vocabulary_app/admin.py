@@ -1,7 +1,7 @@
 from typing import Any
 from django.contrib import admin
 from django.db.models.query import QuerySet
-from .models import TextSection, Author
+from .models import TextSection, Author, TextTranslate
 from django.db.models import Q
 
 # Register your models here.
@@ -9,6 +9,11 @@ from django.db.models import Q
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ['first_name']
+
+
+@admin.register(TextTranslate)
+class TextTranslateAdmin(admin.ModelAdmin):
+    list_display = ['translated_text']
 
 
 class RatingFilter(admin.SimpleListFilter):
