@@ -49,3 +49,4 @@ class TextSection(models.Model):
 
     def __str__(self) -> str:
         return f'{self.title} with rated: {self.rating}'
+    
